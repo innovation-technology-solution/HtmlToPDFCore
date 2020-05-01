@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using HtmlToPDFCore;
 using System.IO;
 using System.Reflection;
+using System.Net;
 
 namespace TesteMVC.Controllers
 {
@@ -33,6 +34,17 @@ namespace TesteMVC.Controllers
 
             {
                 var html = "<html><body><b>TESTE PDF</b></body></html>";
+
+                //var html = "we can set local path also of html as URL";
+
+
+
+
+                using (WebClient client = new WebClient())
+                {
+                    html = client.DownloadString(@"https://www.chetu.com/");
+                }
+
 
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
